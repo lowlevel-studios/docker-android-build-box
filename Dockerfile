@@ -3,13 +3,9 @@ FROM ubuntu:16.04
 MAINTAINER Thomas Schmidt
 
 ENV ANDROID_HOME /opt/android-sdk
-ENV ANDROID_NDK_HOME  /opt/android-ndk
 
 # Get the latest version from https://developer.android.com/studio/index.html
 ENV ANDROID_SDK_VERSION="25.2.5"
-
-# Get the latest version from https://developer.android.com/ndk/downloads/index.html
-ENV ANDROID_NDK_VERSION="15"
 
 ENV LANG en_US.UTF-8
 RUN apt-get clean && apt-get update && apt-get install -y locales
@@ -62,10 +58,6 @@ RUN wget -q -O tools.zip https://dl.google.com/android/repository/tools_r${ANDRO
     # Install Android components
     cd $ANDROID_HOME && \
 
-    echo "Install android-19" && \
-    echo y | tools/android --silent update sdk --no-ui --all --filter android-19 && \
-    echo "Install android-20" && \
-    echo y | tools/android --silent update sdk --no-ui --all --filter android-20 && \
     echo "Install android-21" && \
     echo y | tools/android --silent update sdk --no-ui --all --filter android-21 && \
     echo "Install android-22" && \
@@ -82,24 +74,6 @@ RUN wget -q -O tools.zip https://dl.google.com/android/repository/tools_r${ANDRO
     echo "Install platform-tools" && \
     echo y | tools/android --silent update sdk --no-ui --all --filter platform-tools && \
 
-    echo "Install build-tools-21.1.2" && \
-    echo y | tools/android --silent update sdk --no-ui --all --filter build-tools-21.1.2 && \
-    echo "Install build-tools-22.0.1" && \
-    echo y | tools/android --silent update sdk --no-ui --all --filter build-tools-22.0.1 && \
-    echo "Install build-tools-23.0.1" && \
-    echo y | tools/android --silent update sdk --no-ui --all --filter build-tools-23.0.1 && \
-    echo "Install build-tools-23.0.2" && \
-    echo y | tools/android --silent update sdk --no-ui --all --filter build-tools-23.0.2 && \
-    echo "Install build-tools-23.0.3" && \
-    echo y | tools/android --silent update sdk --no-ui --all --filter build-tools-23.0.3 && \
-    echo "Install build-tools-24" && \
-    echo y | tools/android --silent update sdk --no-ui --all --filter build-tools-24 && \
-    echo "Install build-tools-24.0.1" && \
-    echo y | tools/android --silent update sdk --no-ui --all --filter build-tools-24.0.1 && \
-    echo "Install build-tools-24.0.2" && \
-    echo y | tools/android --silent update sdk --no-ui --all --filter build-tools-24.0.2 && \
-    echo "Install build-tools-24.0.3" && \
-    echo y | tools/android --silent update sdk --no-ui --all --filter build-tools-24.0.3 && \
     echo "Install build-tools-25" && \
     echo y | tools/android --silent update sdk --no-ui --all --filter build-tools-25 && \
     echo "Install build-tools-25.0.1" && \
@@ -107,7 +81,7 @@ RUN wget -q -O tools.zip https://dl.google.com/android/repository/tools_r${ANDRO
     echo "Install build-tools-25.0.2" && \
     echo y | tools/android --silent update sdk --no-ui --all --filter build-tools-25.0.2 && \
     echo "Install build-tools-25.0.3" && \
-    echo y | tools/android --silent update sdk --no-ui --all --filter build-tools-25.2.3 && \
+    echo y | tools/android --silent update sdk --no-ui --all --filter build-tools-25.0.3 && \
     echo "Install build-tools-26.0.0" && \
     echo y | tools/android --silent update sdk --no-ui --all --filter build-tools-26.0.0 && \
 
@@ -120,15 +94,9 @@ RUN wget -q -O tools.zip https://dl.google.com/android/repository/tools_r${ANDRO
     echo "Install extra-google-m2repository" && \
     echo y | tools/android --silent update sdk --no-ui --all --filter extra-google-m2repository
 
-# Install Android NDK, put it in a separate RUN to avoid travis-ci timeout in 10 minutes.
-RUN wget -q -O android-ndk.zip http://dl.google.com/android/repository/android-ndk-r${ANDROID_NDK_VERSION}-linux-x86_64.zip && \
-    unzip -q android-ndk.zip && \
-    rm -fr $ANDROID_NDK_HOME android-ndk.zip && \
-    mv android-ndk-r${ANDROID_NDK_VERSION} $ANDROID_NDK_HOME
-
 # Add android commands to PATH
 ENV ANDROID_SDK_HOME $ANDROID_HOME
-ENV PATH $PATH:$ANDROID_SDK_HOME/tools:$ANDROID_SDK_HOME/platform-tools:$ANDROID_NDK_HOME
+ENV PATH $PATH:$ANDROID_SDK_HOME/tools:$ANDROID_SDK_HOME/platform-tools
 
 
 # Export JAVA_HOME variable
