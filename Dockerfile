@@ -13,7 +13,7 @@ WORKDIR /tmp
 
 # Installing packages
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends \
+    apt-get install -y \
         build-essential \
         autoconf \
         git \
