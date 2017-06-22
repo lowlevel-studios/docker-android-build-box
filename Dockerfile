@@ -1,16 +1,11 @@
 FROM ubuntu:16.04
 
-MAINTAINER Ming Chen
+MAINTAINER Thomas Schmidt
 
 ENV ANDROID_HOME /opt/android-sdk
-ENV ANDROID_NDK  /opt/android-ndk
-ENV ANDROID_NDK_HOME /opt/android-ndk
 
 # Get the latest version from https://developer.android.com/studio/index.html
 ENV ANDROID_SDK_VERSION="25.2.5"
-
-# Get the latest version from https://developer.android.com/ndk/downloads/index.html
-ENV ANDROID_NDK_VERSION="13b"
 
 # Set locale
 ENV LANG en_US.UTF-8
@@ -118,21 +113,12 @@ RUN wget -q -O tools.zip https://dl.google.com/android/repository/tools_r${ANDRO
     echo "Install extra-android-m2repository" && \
     echo y | tools/android --silent update sdk --no-ui --all --filter extra-android-m2repository && \
 
-    echo "Install extra-google-google_play_services" && \
-    echo y | tools/android --silent update sdk --no-ui --all --filter extra-google-google_play_services && \
-
     echo "Install extra-google-m2repository" && \
     echo y | tools/android --silent update sdk --no-ui --all --filter extra-google-m2repository
 
-# Install Android NDK, put it in a separate RUN to avoid travis-ci timeout in 10 minutes.
-RUN wget -q -O android-ndk.zip http://dl.google.com/android/repository/android-ndk-r${ANDROID_NDK_VERSION}-linux-x86_64.zip && \
-    unzip -q android-ndk.zip && \
-    rm -fr $ANDROID_NDK android-ndk.zip && \
-    mv android-ndk-r${ANDROID_NDK_VERSION} $ANDROID_NDK
-
 # Add android commands to PATH
 ENV ANDROID_SDK_HOME $ANDROID_HOME
-ENV PATH $PATH:$ANDROID_SDK_HOME/tools:$ANDROID_SDK_HOME/platform-tools:$ANDROID_NDK
+ENV PATH $PATH:$ANDROID_SDK_HOME/tools:$ANDROID_SDK_HOME
 
 # Export JAVA_HOME variable
 ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/
