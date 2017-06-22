@@ -1,12 +1,7 @@
 language: bash
 
-sudo: required
-
 services: 
   - docker
-
-# Skipping the Installation Step
-install: true
 
 script:
   - docker build -t android-build-box .
