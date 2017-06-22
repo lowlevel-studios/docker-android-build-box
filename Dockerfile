@@ -8,6 +8,9 @@ ENV ANDROID_HOME /opt/android-sdk
 ENV ANDROID_SDK_VERSION="25.2.5"
 
 # Set locale
+ENV LANGUAGE en_US.UTF-8
+ENV LC_ALL en_US.UTF-8
+ENV LC_TYPE en_US.UTF-8
 ENV LANG en_US.UTF-8
 RUN apt-get clean && apt-get update && apt-get install -y locales
 RUN locale-gen $LANG
