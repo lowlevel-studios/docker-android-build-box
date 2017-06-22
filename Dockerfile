@@ -76,6 +76,8 @@ RUN wget -q -O tools.zip https://dl.google.com/android/repository/tools_r${ANDRO
     echo y | tools/android --silent update sdk --no-ui --all --filter android-24 && \
     echo "Install android-25" && \
     echo y | tools/android --silent update sdk --no-ui --all --filter android-25 && \
+    echo "Install android-26" && \
+    echo y | tools/android --silent update sdk --no-ui --all --filter android-26 && \
 
     echo "Install platform-tools" && \
     echo y | tools/android --silent update sdk --no-ui --all --filter platform-tools && \
