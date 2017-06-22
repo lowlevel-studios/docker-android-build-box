@@ -1,5 +1,9 @@
 language: bash
-services: docker
+
+sudo: required
+
+services: 
+  - docker
 
 # Skipping the Installation Step
 install: true
