@@ -89,7 +89,50 @@ ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}
 RUN mkdir -p ${ANDROID_HOME}/licenses
 RUN echo 8933bad161af4178b1185d1a37fbf41ea5269c55 > ${ANDROID_HOME}/licenses/android-sdk-license
 
+# Platform tools
+RUN sdkmanager "platform-tools"
 
+# Android SDKs
+# Please keep these in descending order!
+RUN sdkmanager "platforms;android-26"
+RUN sdkmanager "platforms;android-25"
+RUN sdkmanager "platforms;android-24"
+RUN sdkmanager "platforms;android-23"
+RUN sdkmanager "platforms;android-22"
+RUN sdkmanager "platforms;android-21"
+
+# Android build tools
+# Please keep these in descending order!
+RUN sdkmanager "build-tools;26.0.0"
+RUN sdkmanager "build-tools;25.0.3"
+RUN sdkmanager "build-tools;25.0.2"
+RUN sdkmanager "build-tools;25.0.1"
+RUN sdkmanager "build-tools;24.0.3"
+RUN sdkmanager "build-tools;23.0.3"
+
+# Android Emulator
+RUN sdkmanager "emulator"
+
+# Android System Images, for emulators
+# Please keep these in descending order!
+RUN sdkmanager "system-images;android-26;google_apis;x86"
+RUN sdkmanager "system-images;android-26;google_apis;x86_64"
+RUN sdkmanager "system-images;android-25;google_apis;x86"
+RUN sdkmanager "system-images;android-25;google_apis;x86_64"
+RUN sdkmanager "system-images;android-24;default;x86"
+RUN sdkmanager "system-images;android-24;default;x86_64"
+RUN sdkmanager "system-images;android-22;default;x86"
+RUN sdkmanager "system-images;android-22;default;x86_64"
+
+# Extras
+RUN sdkmanager "extras;android;m2repository"
+RUN sdkmanager "extras;google;m2repository"
+RUN sdkmanager "extras;google;google_play_services"
+
+# Constraint Layout
+# Please keep these in descending order!
+RUN sdkmanager "extras;m2repository;com;android;support;constraint;constraint-layout;1.0.2"
+RUN sdkmanager "extras;m2repository;com;android;support;constraint;constraint-layout;1.0.1"
 
 # ------------------------------------------------------
 # --- Install Gradle from PPA
