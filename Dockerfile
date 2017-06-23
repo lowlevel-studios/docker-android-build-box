@@ -23,8 +23,7 @@ RUN apt-get update -qq
 # Install the "locales" package - required for locale-gen
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y \
     locales \
-# Do Locale gen
- && locale-gen en_US.UTF-8
+RUN locale-gen en_US.UTF-8
 
 COPY README.md /README.md
 
