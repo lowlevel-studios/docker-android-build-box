@@ -15,9 +15,13 @@ ENV LANG="en_US.UTF-8" \
     LANGUAGE="en_US.UTF-8" \
     LC_ALL="en_US.UTF-8" \
     
+# ------------------------------------------------------
+# --- Base pre-installed tools
+RUN apt-get update -qq
+    
 # Generate proper EN US UTF-8 locale
 # Install the "locales" package - required for locale-gen
-RUN apt-get clean && apt-get update && apt-get install -y \
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y \
     locales \
 # Do Locale gen
  && locale-gen en_US.UTF-8
