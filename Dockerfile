@@ -21,6 +21,7 @@ RUN apt-get update && \
         build-essential \
         autoconf \
         git \
+        file \
         curl \
         wget \
         lib32stdc++6 \
