@@ -69,7 +69,7 @@ RUN wget -q -O tools.zip https://dl.google.com/android/repository/tools_r${ANDRO
     unzip -q tools.zip && \
     rm -fr $ANDROID_HOME tools.zip && \
     mkdir -p $ANDROID_HOME && \
-    mv tools $ANDROID_HOME/tools && \
+    mv tools $ANDROID_HOME/tools
     
 # Add android commands to PATH
 ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}/platform-tools
