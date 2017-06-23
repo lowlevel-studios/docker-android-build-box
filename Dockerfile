@@ -58,7 +58,7 @@ RUN wget -q -O tools.zip https://dl.google.com/android/repository/tools_r${ANDRO
     
 # Add android commands to PATH
 ENV ANDROID_SDK_HOME $ANDROID_HOME
-ENV PATH $PATH:$ANDROID_SDK_HOME/tools:$ANDROID_SDK_HOME/tools/bin:$ANDROID_SDK_HOME/platform-tools
+ENV PATH $PATH:$ANDROID_SDK_HOME/tools:$ANDROID_SDK_HOME/platform-tools
 
 # ------------------------------------------------------
 # --- Install Android SDKs and other build packages
