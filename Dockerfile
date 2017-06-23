@@ -66,7 +66,7 @@ ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}
 # Other tools and resources of Android SDK
 #  you should only install the packages you need!
 # To get a full list of available options you can use:
-sdkmanager --list
+RUN sdkmanager --list
 
 
 # Accept "android-sdk-license" before installing components, no need to echo y for each component
