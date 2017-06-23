@@ -57,8 +57,7 @@ RUN wget -q -O tools.zip https://dl.google.com/android/repository/tools_r${ANDRO
     mv tools $ANDROID_HOME/tools && \
     
 # Add android commands to PATH
-ENV ANDROID_SDK_HOME $ANDROID_HOME
-ENV PATH $PATH:$ANDROID_SDK_HOME/tools:$ANDROID_SDK_HOME/platform-tools
+ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}/platform-tools
 
 # ------------------------------------------------------
 # --- Install Android SDKs and other build packages
@@ -66,7 +65,7 @@ ENV PATH $PATH:$ANDROID_SDK_HOME/tools:$ANDROID_SDK_HOME/platform-tools
 # Other tools and resources of Android SDK
 #  you should only install the packages you need!
 # To get a full list of available options you can use:
-RUN sdkmanager --list
+# RUN sdkmanager --list
 
 
 # Accept "android-sdk-license" before installing components, no need to echo y for each component
