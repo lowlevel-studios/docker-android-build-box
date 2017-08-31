@@ -4,7 +4,7 @@ MAINTAINER Thomas Schmidt
 
 ENV ANDROID_HOME /opt/android-sdk
 
-ENV ANDROID_SDK_VERSION="26.0.2"
+ENV ANDROID_SDK_VERSION="25.2.5"
 
 # ------------------------------------------------------
 # --- Environments and base directories
