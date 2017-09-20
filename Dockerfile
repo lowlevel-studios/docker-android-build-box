@@ -94,14 +94,14 @@ RUN sdkmanager "platform-tools"
 
 # Android SDKs
 # Please keep these in descending order!
-RUN sdkmanager "platforms;android-26" "platforms;android-25" "platforms;android-24" && \
+RUN sdkmanager "platforms;android-26" "platforms;android-25" "platforms;android-24" \
 "platforms;android-23" "platforms;android-22" "platforms;android-21"
 
 # Android build tools
 # Please keep these in descending order!
 # RUN sdkmanager "build-tools;26.1.0" Not ready yet
 # RUN sdkmanager "build-tools;26.0.2" Not ready yet
-RUN sdkmanager "build-tools;26.0.1" "build-tools;26.0.0" "build-tools;25.0.3" "build-tools;25.0.2" && \
+RUN sdkmanager "build-tools;26.0.1" "build-tools;26.0.0" "build-tools;25.0.3" "build-tools;25.0.2" \
 "build-tools;25.0.1" "build-tools;24.0.3" "build-tools;23.0.3"
 
 # Android Emulator
