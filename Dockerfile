@@ -103,7 +103,7 @@ RUN sdkmanager "platforms;android-21"
 
 # Android build tools
 # Please keep these in descending order!
-RUN sdkmanager "build-tools;26.1.0"
+# RUN sdkmanager "build-tools;26.1.0" Not ready yet
 RUN sdkmanager "build-tools;26.0.2"
 RUN sdkmanager "build-tools;26.0.0"
 RUN sdkmanager "build-tools;25.0.3"
