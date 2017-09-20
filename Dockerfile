@@ -4,7 +4,7 @@ MAINTAINER Thomas Schmidt
 
 ENV ANDROID_HOME /opt/android-sdk
 
-ENV ANDROID_SDK_VERSION="25.2.5"
+ENV ANDROID_SDK_VERSION="26.1.0"
 
 # ------------------------------------------------------
 # --- Environments and base directories
@@ -65,7 +65,7 @@ RUN apt-get update && \
 
 # ------------------------------------------------------
 # --- Download Android SDK tools into $ANDROID_HOME
-RUN wget -q -O tools.zip https://dl.google.com/android/repository/tools_r${ANDROID_SDK_VERSION}-linux.zip && \
+RUN wget -q -O tools.zip https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip && \
     unzip -q tools.zip && \
     rm -fr $ANDROID_HOME tools.zip && \
     mkdir -p $ANDROID_HOME && \
