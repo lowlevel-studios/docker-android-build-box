@@ -100,12 +100,11 @@ RUN sdkmanager "platforms;android-26" "platforms;android-25" "platforms;android-
 # Android build tools
 # Please keep these in descending order!
 # RUN sdkmanager "build-tools;26.1.0" Not ready yet
-# RUN sdkmanager "build-tools;26.0.2" Not ready yet
 RUN sdkmanager "build-tools;26.0.2" "build-tools;26.0.1" "build-tools;26.0.0" "build-tools;25.0.3" "build-tools;25.0.2" \
 "build-tools;25.0.1" "build-tools;24.0.3" "build-tools;23.0.3" | echo y
 
 # Android Emulator
-RUN sdkmanager "emulator"
+RUN sdkmanager "emulator" | echo y
 
 # Android System Images, for emulators
 # Please keep these in descending order!
@@ -119,14 +118,12 @@ RUN sdkmanager "system-images;android-22;default;x86" | echo y
 RUN sdkmanager "system-images;android-22;default;x86_64" | echo y
 
 # Extras
-RUN sdkmanager "extras;android;m2repository"
-RUN sdkmanager "extras;google;m2repository"
-RUN sdkmanager "extras;google;google_play_services"
+RUN sdkmanager "extras;android;m2repository" "extras;google;m2repository" "extras;google;google_play_services" | echo y
 
 # Constraint Layout
 # Please keep these in descending order!
-RUN sdkmanager "extras;m2repository;com;android;support;constraint;constraint-layout;1.0.2"
-RUN sdkmanager "extras;m2repository;com;android;support;constraint;constraint-layout;1.0.1"
+RUN sdkmanager "extras;m2repository;com;android;support;constraint;constraint-layout;1.0.2" \
+"extras;m2repository;com;android;support;constraint;constraint-layout;1.0.1" | echo y
 
 # ------------------------------------------------------
 # --- Install Gradle from PPA
