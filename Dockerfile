@@ -90,7 +90,7 @@ RUN mkdir -p ${ANDROID_HOME}/licenses
 RUN echo 8933bad161af4178b1185d1a37fbf41ea5269c55 > ${ANDROID_HOME}/licenses/android-sdk-license
 
 # Platform tools
-RUN sdkmanager "platform-tools"
+RUN sdkmanager "platform-tools" | echo y
 
 # Android SDKs
 # Please keep these in descending order!
