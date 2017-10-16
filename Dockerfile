@@ -81,7 +81,7 @@ ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}
 #  you should only install the packages you need!
 # To get a full list of available options you can use:
 # RUN sdkmanager --list
-
+RUN touch ~/.android/repositories.cfg
 
 # Accept "android-sdk-license" before installing components, no need to echo y for each component
 # License is valid for all the standard components in versions installed from this file
