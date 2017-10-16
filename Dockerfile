@@ -81,8 +81,6 @@ ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}
 #  you should only install the packages you need!
 # To get a full list of available options you can use:
 # RUN sdkmanager --list
-# Accept licenses
-RUN yes | sdkmanager --licenses
 RUN mkdir -p ~/.android/ && echo '### User Sources for Android SDK Manager' > ~/.android/repositories.cfg
 
 # Accept "android-sdk-license" before installing components, no need to echo y for each component
@@ -96,6 +94,9 @@ echo e9acab5b5fbb560a72cfaecce8946896ff6aab9d > ${ANDROID_HOME}/licenses/mips-an
 echo 601085b94cd77f0b54ff86406957099ebe79c4d6 > ${ANDROID_HOME}/licenses/android-googletv-license && \
 echo 84831b9409646a918e30573bab4c9c91346d8abd > ${ANDROID_HOME}/licenses/android-sdk-preview-license && \
 echo 33b6a2b64607f11b759f320ef9dff4ae5c47d97a > ${ANDROID_HOME}/licenses/google-gdk-license
+
+# Accept licenses
+RUN yes | sdkmanager --licenses
 
 # Platform tools
 RUN sdkmanager "platform-tools" | echo y
