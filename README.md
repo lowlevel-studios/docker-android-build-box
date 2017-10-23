@@ -6,24 +6,31 @@
 
 ## Introduction
 
-A **docker** image build with **Android** build environment. This is based on the fabulous work by [Ming Chen](https://github.com/mingchen/docker-android-build-box). So thanks goes to him for providing this.
+A **docker** image build to supply an **Android** build environment. This is based on the fabulous work by [Ming Chen](https://github.com/mingchen/docker-android-build-box). So thanks goes to him for providing the base for this.
 
 
 ## What's Inside
 
-It include following components:
-
+It includes the following components:
 * Ubuntu 16.04
-* Android SDK 21 22 23 24 25
-* Android build tools 25 25.0.1 25.0.2 25.0.3 26.0.0
+* Android SDK 22 25 26
+* Android build tools 24.0.3 25.0.1 25.0.2 25.0.3 26.0.0 26.0.1 26.0.2
+* Android Emulator
+* System images:
+  * system-images;android-22;default;x86
+  * system-images;android-22;default;x86_64
+  * system-images;android-25;google_apis;x86_64
+  * system-images;android-26;google_apis;x86
+  * system-images;android-26;google_apis;x86_64
 * extra-android-m2repository
-* extra-google-google\_play\_services
+* extra-google-google_play_services
 * extra-google-m2repository
+* ConstraintLayout 1.0.1 1.0.2
 
 
 ## Docker Pull Command
 
-The docker image is publicly automated build on [Docker Hub](https://hub.docker.com/r/bohsen/android-build-box/) based on Dockerfile in this repo, so there is no hidden staff in image. To pull the latest docker image:
+The docker image is publicly available on [Docker Hub](https://hub.docker.com/r/bohsen/android-build-box/) based on Dockerfile in this repo, so there is nothing hidden in the image. To pull the latest docker image:
 
     docker pull bohsen/android-build-box:latest
 
@@ -57,7 +64,7 @@ Here is an example of `bitbucket-pipelines.yml`
 ## Docker Build Image
 
 If you want to build docker image by yourself, you can use following `docker build` command to build your image.
-The image itself up to 5.5 GB, check your free disk space before build it.
+The image itself is up to 3 GB (can change significantly on every build if sdk components change), so check your free disk space before building it.
 
     docker build -t android-build-box .
 
