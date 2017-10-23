@@ -3,11 +3,26 @@ language: bash
 services: 
   - docker
 
+env:
+  global:
+  - COMMIT=${TRAVIS_COMMIT::8}
+  - REPO=bohsen/android-build-box
+
 script:
-  - docker build -t android-build-box .
+  - export TAG=`if [[ $TRAVIS_PULL_REQUEST == "false" ]] && [[ $TRAVIS_BRANCH == "master" ]]; then echo "latest"; else echo $TRAVIS_PULL_REQUEST_BRANCH; fi`
+  - export REPO=bohsen/android-build-box
+  - docker build -t $REPO:$TAG -f dockerfile .
 
 after_script:
   - docker images
+  
+after_success:
+  - docker login -u $DOCKER_USER -p $DOCKER_PASS
+  - if [[ $TRAVIS_PULL_REQUEST == "false" ]] && [[ $TRAVIS_BRANCH == "master" ]]; then
+    docker tag $REPO:$TAG $REPO:$TRAVIS_BUILD_NUMBER;
+    docker push $REPO:$TRAVIS_BUILD_NUMBER;
+    fi 
+  - docker push $REPO:$TAG
 
 before_cache:
   - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
