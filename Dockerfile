@@ -80,12 +80,15 @@ ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}
 # Other tools and resources of Android SDK
 #  you should only install the packages you need!
 # To get a full list of available options you can use:
-# RUN sdkmanager --list
+RUN sdkmanager --list
+
 RUN mkdir -p ~/.android/ && echo '### User Sources for Android SDK Manager' > ~/.android/repositories.cfg
 
-# Accept "android-sdk-license" before installing components, no need to echo y for each component
+# Accept licenses before installing components, no need to echo y for each component
 # License is valid for all the standard components in versions installed from this file
 # Non-standard components: MIPS system images, preview versions, GDK (Google Glass) and Android Google TV require separate licenses, not accepted there
+# Accept licenses
+RUN yes | sdkmanager --licenses
 RUN mkdir -p ${ANDROID_HOME}/licenses
 RUN echo 8933bad161af4178b1185d1a37fbf41ea5269c55 > ${ANDROID_HOME}/licenses/android-sdk-license && \
 echo d56f5187479451eabf01fb78af6dfcb131a6481e >> ${ANDROID_HOME}/licenses/android-sdk-license && \
@@ -95,34 +98,26 @@ echo 601085b94cd77f0b54ff86406957099ebe79c4d6 > ${ANDROID_HOME}/licenses/android
 echo 84831b9409646a918e30573bab4c9c91346d8abd > ${ANDROID_HOME}/licenses/android-sdk-preview-license && \
 echo 33b6a2b64607f11b759f320ef9dff4ae5c47d97a > ${ANDROID_HOME}/licenses/google-gdk-license
 
-# Accept licenses
-RUN yes | sdkmanager --licenses
-
 # Platform tools
-RUN sdkmanager "platform-tools" | echo y
+RUN sdkmanager "platform-tools"
 
 # Android SDKs
 # Please keep these in descending order!
-RUN sdkmanager "platforms;android-26" "platforms;android-25" "platforms;android-24" \
-"platforms;android-23" "platforms;android-22" | echo y
+RUN sdkmanager "platforms;android-26" "platforms;android-25" "platforms;android-22"
 
 # Android build tools
 # Please keep these in descending order!
-# RUN sdkmanager "build-tools;26.1.0" Not ready yet
 RUN sdkmanager "build-tools;26.0.2" "build-tools;26.0.1" "build-tools;26.0.0" "build-tools;25.0.3" "build-tools;25.0.2" \
-"build-tools;25.0.1" "build-tools;24.0.3" | echo y
+"build-tools;25.0.1" "build-tools;24.0.3"
 
 # Android Emulator
 RUN sdkmanager "emulator" | echo y
 
 # Android System Images, for emulators
 # Please keep these in descending order!
-RUN sdkmanager "system-images;android-26;google_apis;x86" | echo y
-RUN sdkmanager "system-images;android-26;google_apis;x86_64" | echo y
-RUN sdkmanager "system-images;android-25;google_apis;x86_64" | echo y
-RUN sdkmanager "system-images;android-24;default;x86_64" | echo y
-RUN sdkmanager "system-images;android-22;default;x86" | echo y
-RUN sdkmanager "system-images;android-22;default;x86_64" | echo y
+RUN sdkmanager "system-images;android-26;google_apis;x86" "system-images;android-26;google_apis;x86_64" \
+"system-images;android-25;google_apis;x86_64" "system-images;android-22;default;x86" \
+"system-images;android-22;default;x86_64" | echo y
 
 # Extras
 RUN sdkmanager "extras;android;m2repository" "extras;google;m2repository" "extras;google;google_play_services" | echo y
