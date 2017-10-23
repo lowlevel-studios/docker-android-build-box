@@ -11,7 +11,7 @@ env:
 script:
   - export TAG=`if [[ $TRAVIS_PULL_REQUEST == "false" ]] && [[ $TRAVIS_BRANCH == "master" ]]; then echo "latest"; else echo $TRAVIS_PULL_REQUEST_BRANCH; fi`
   - export REPO=bohsen/android-build-box
-  - docker build -t $REPO:$TAG -f dockerfile .
+  - docker build -t $REPO:$TAG -f Dockerfile .
 
 after_script:
   - docker images
