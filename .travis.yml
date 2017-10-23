@@ -18,12 +18,11 @@ after_script:
   
 after_success:
   - docker login -u $DOCKER_USER -p $DOCKER_PASS
-#  - if [[ $TRAVIS_PULL_REQUEST == "false" ]] && [[ $TRAVIS_BRANCH == "master" ]]; then
-#    docker tag $REPO:$TAG $REPO:$TRAVIS_BUILD_NUMBER;
-#    docker push $REPO:$TRAVIS_BUILD_NUMBER;
-#    fi 
-#  - docker push $REPO:$TAG
-   - docker push bohsen/android-build-box:latest
+  - if [[ $TRAVIS_PULL_REQUEST == "false" ]] && [[ $TRAVIS_BRANCH == "master" ]]; then
+    docker tag $REPO:$TAG $REPO:$TRAVIS_BUILD_NUMBER;
+    docker push $REPO:$TRAVIS_BUILD_NUMBER;
+    fi 
+  - docker push $REPO:$TAG
 
 
 before_cache:
