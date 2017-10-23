@@ -18,11 +18,13 @@ after_script:
   
 after_success:
   - docker login -u $DOCKER_USER -p $DOCKER_PASS
-  - if [[ $TRAVIS_PULL_REQUEST == "false" ]] && [[ $TRAVIS_BRANCH == "master" ]]; then
-    docker tag $REPO:$TAG $REPO:$TRAVIS_BUILD_NUMBER;
-    docker push $REPO:$TRAVIS_BUILD_NUMBER;
-    fi 
-  - docker push $REPO:$TAG
+#  - if [[ $TRAVIS_PULL_REQUEST == "false" ]] && [[ $TRAVIS_BRANCH == "master" ]]; then
+#    docker tag $REPO:$TAG $REPO:$TRAVIS_BUILD_NUMBER;
+#    docker push $REPO:$TRAVIS_BUILD_NUMBER;
+#    fi 
+#  - docker push $REPO:$TAG
+   - docker push bohsen/android-build-box:latest
+
 
 before_cache:
   - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
