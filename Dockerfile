@@ -65,6 +65,8 @@ RUN apt-get update && \
 
 # ------------------------------------------------------
 # --- Download Android SDK tools into $ANDROID_HOME
+# Newest version of sdk-tools can be found under 'Get just the command line tools' from here
+# https://developer.android.com/studio/index.html#downloads
 RUN wget -q -O tools.zip https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip && \
     unzip -q tools.zip && \
     rm -fr $ANDROID_HOME tools.zip && \
