@@ -13,8 +13,8 @@ A **docker** image build to supply an **Android** build environment. This is bas
 
 It includes the following components:
 * Ubuntu 16.04
-* Android SDK 22 25 26
-* Android build tools 24.0.3 25.0.1 25.0.2 25.0.3 26.0.0 26.0.1 26.0.2
+* Android SDK 22 25 26 27
+* Android build tools 24.0.3 25.0.1 25.0.2 25.0.3 26.0.0 26.0.1 26.0.2 27.0.0
 * Android Emulator
 * System images:
   * system-images;android-22;default;x86
