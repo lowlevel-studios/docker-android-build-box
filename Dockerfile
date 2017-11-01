@@ -103,7 +103,7 @@ RUN sdkmanager "platform-tools"
 
 # Android SDKs
 # Please keep these in descending order!
-RUN sdkmanager "platforms;android-26" "platforms;android-25" "platforms;android-22"
+RUN sdkmanager "platforms;android-27" "platforms;android-26" "platforms;android-25" "platforms;android-22"
 
 # Android build tools
 # Please keep these in descending order!
