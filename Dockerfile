@@ -127,6 +127,9 @@ RUN sdkmanager "extras;android;m2repository" "extras;google;m2repository" "extra
 RUN sdkmanager "extras;m2repository;com;android;support;constraint;constraint-layout;1.0.2" \
 "extras;m2repository;com;android;support;constraint;constraint-layout;1.0.1" | echo y
 
+# Update all components
+Run sdkmanager --update
+
 # Check installed components
 RUN sdkmanager --list
 
