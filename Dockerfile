@@ -96,9 +96,6 @@ echo 601085b94cd77f0b54ff86406957099ebe79c4d6 > ${ANDROID_HOME}/licenses/android
 echo 84831b9409646a918e30573bab4c9c91346d8abd > ${ANDROID_HOME}/licenses/android-sdk-preview-license && \
 echo 33b6a2b64607f11b759f320ef9dff4ae5c47d97a > ${ANDROID_HOME}/licenses/google-gdk-license
 
-# Update tools
-RUN sdkmanager --update
-
 # Platform tools
 RUN sdkmanager "platform-tools"
 
@@ -109,14 +106,14 @@ RUN sdkmanager "platforms;android-27" "platforms;android-26" "platforms;android-
 # Android build tools
 # Please keep these in descending order!
 RUN sdkmanager "build-tools;27.0.0" "build-tools;26.0.2" "build-tools;26.0.1" "build-tools;26.0.0" "build-tools;25.0.3" \
-"build-tools;25.0.2" "build-tools;25.0.1" "build-tools;24.0.3"
+"build-tools;25.0.2"
 
 # Android Emulator
 RUN sdkmanager "emulator" | echo y
 
 # Android System Images, for emulators
 # Please keep these in descending order!
-RUN sdkmanager "system-images;android-26;google_apis;x86" "system-images;android-26;google_apis;x86_64" \
+RUN sdkmanager "system-images;android-26;google_apis;x86" \
 "system-images;android-25;google_apis;x86_64" "system-images;android-22;default;x86" \
 "system-images;android-22;default;x86_64" | echo y
 
@@ -127,6 +124,9 @@ RUN sdkmanager "extras;android;m2repository" "extras;google;m2repository" "extra
 # Please keep these in descending order!
 RUN sdkmanager "extras;m2repository;com;android;support;constraint;constraint-layout;1.0.2" \
 "extras;m2repository;com;android;support;constraint;constraint-layout;1.0.1" | echo y
+
+# Update
+RUN sdkmanager --update
 
 # Check installed components
 RUN sdkmanager --list
