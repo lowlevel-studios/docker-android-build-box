@@ -97,14 +97,14 @@ echo 84831b9409646a918e30573bab4c9c91346d8abd > ${ANDROID_HOME}/licenses/android
 echo 33b6a2b64607f11b759f320ef9dff4ae5c47d97a > ${ANDROID_HOME}/licenses/google-gdk-license
 
 # Update tools
-RUN sdkmanager "tools"
+# RUN sdkmanager "tools"
 
 # Platform tools
 RUN sdkmanager "platform-tools"
 
 # Android SDKs
 # Please keep these in descending order!
-RUN sdkmanager "platforms;android-26" "platforms;android-25" "platforms;android-22"
+RUN sdkmanager "platforms;android-27" "platforms;android-26" "platforms;android-25" "platforms;android-22"
 
 # Android build tools
 # Please keep these in descending order!
