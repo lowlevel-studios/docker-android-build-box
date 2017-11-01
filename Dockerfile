@@ -97,7 +97,7 @@ echo 84831b9409646a918e30573bab4c9c91346d8abd > ${ANDROID_HOME}/licenses/android
 echo 33b6a2b64607f11b759f320ef9dff4ae5c47d97a > ${ANDROID_HOME}/licenses/google-gdk-license
 
 # Update tools
-# RUN sdkmanager "tools"
+RUN sdkmanager --update
 
 # Platform tools
 RUN sdkmanager "platform-tools"
