@@ -96,8 +96,11 @@ echo 601085b94cd77f0b54ff86406957099ebe79c4d6 > ${ANDROID_HOME}/licenses/android
 echo 84831b9409646a918e30573bab4c9c91346d8abd > ${ANDROID_HOME}/licenses/android-sdk-preview-license && \
 echo 33b6a2b64607f11b759f320ef9dff4ae5c47d97a > ${ANDROID_HOME}/licenses/google-gdk-license
 
+# Update tools
+RUN sdkmanager "tools"
+
 # Platform tools
-RUN sdkmanager "platform-tools" "tools"
+RUN sdkmanager "platform-tools"
 
 # Android SDKs
 # Please keep these in descending order!
