@@ -4,6 +4,8 @@ MAINTAINER Thomas Schmidt
 
 ENV ANDROID_HOME /opt/android-sdk
 
+ENV ANDROID_SDK_VERSION="26.1.0"
+
 # ------------------------------------------------------
 # --- Environments and base directories
 
@@ -80,7 +82,7 @@ RUN mkdir -p ~/.android/ && echo '### User Sources for Android SDK Manager' > ~/
 # Other tools and resources of Android SDK
 #  you should only install the packages you need!
 # To get a full list of available options you can use:
-# RUN sdkmanager --list
+RUN sdkmanager --list
 
 # Accept licenses before installing components, no need to echo y for each component
 # License is valid for all the standard components in versions installed from this file
@@ -105,15 +107,15 @@ RUN sdkmanager "platforms;android-26" "platforms;android-25" "platforms;android-
 
 # Android build tools
 # Please keep these in descending order!
-RUN sdkmanager "build-tools;27.0.0" "build-tools;26.0.2" "build-tools;26.0.1" "build-tools;26.0.0" "build-tools;25.0.3" \
-"build-tools;25.0.2"
+RUN sdkmanager "build-tools;26.0.2" "build-tools;26.0.1" "build-tools;26.0.0" "build-tools;25.0.3" "build-tools;25.0.2" \
+"build-tools;25.0.1" "build-tools;24.0.3"
 
 # Android Emulator
 RUN sdkmanager "emulator" | echo y
 
 # Android System Images, for emulators
 # Please keep these in descending order!
-RUN sdkmanager "system-images;android-26;google_apis;x86" \
+RUN sdkmanager "system-images;android-26;google_apis;x86" "system-images;android-26;google_apis;x86_64" \
 "system-images;android-25;google_apis;x86_64" "system-images;android-22;default;x86" \
 "system-images;android-22;default;x86_64" | echo y
 
@@ -124,9 +126,6 @@ RUN sdkmanager "extras;android;m2repository" "extras;google;m2repository" "extra
 # Please keep these in descending order!
 RUN sdkmanager "extras;m2repository;com;android;support;constraint;constraint-layout;1.0.2" \
 "extras;m2repository;com;android;support;constraint;constraint-layout;1.0.1" | echo y
-
-# Update
-RUN sdkmanager --update
 
 # Check installed components
 RUN sdkmanager --list
