@@ -21,6 +21,7 @@ It includes the following components:
   * system-images;android-22;default;x86_64
   * system-images;android-25;google_apis;x86_64
   * system-images;android-26;google_apis;x86
+  * system-images;android-27;google_apis;x86 
 * extra-android-m2repository
 * extra-google-google_play_services
 * extra-google-m2repository
