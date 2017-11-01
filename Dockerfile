@@ -115,7 +115,7 @@ RUN sdkmanager "emulator" | echo y
 
 # Android System Images, for emulators
 # Please keep these in descending order!
-RUN sdkmanager "system-images;android-26;google_apis;x86" "system-images;android-26;google_apis;x86_64" \
+RUN sdkmanager "system-images;android-27;google_apis;x86" "system-images;android-26;google_apis;x86" \
 "system-images;android-25;google_apis;x86_64" "system-images;android-22;default;x86" \
 "system-images;android-22;default;x86_64" | echo y
 
