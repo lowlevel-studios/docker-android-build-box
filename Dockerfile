@@ -80,7 +80,7 @@ RUN mkdir -p ~/.android/ && echo '### User Sources for Android SDK Manager' > ~/
 # Other tools and resources of Android SDK
 #  you should only install the packages you need!
 # To get a full list of available options you can use:
-RUN sdkmanager --list
+# RUN sdkmanager --list
 
 # Accept licenses before installing components, no need to echo y for each component
 # License is valid for all the standard components in versions installed from this file
@@ -126,7 +126,7 @@ RUN sdkmanager "extras;m2repository;com;android;support;constraint;constraint-la
 "extras;m2repository;com;android;support;constraint;constraint-layout;1.0.1" | echo y
 
 # Update
-RUN sdkmanager --update
+# RUN sdkmanager --update
 
 # Check installed components
 RUN sdkmanager --list
