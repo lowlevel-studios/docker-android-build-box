@@ -4,8 +4,6 @@ MAINTAINER Thomas Schmidt
 
 ENV ANDROID_HOME /opt/android-sdk
 
-ENV ANDROID_SDK_VERSION="26.1.0"
-
 # ------------------------------------------------------
 # --- Environments and base directories
 
@@ -108,15 +106,16 @@ RUN sdkmanager "platforms;android-27" "platforms;android-26" "platforms;android-
 # Android build tools
 # Please keep these in descending order!
 RUN sdkmanager "build-tools;27.0.0" "build-tools;26.0.2" "build-tools;26.0.1" "build-tools;26.0.0" "build-tools;25.0.3" "build-tools;25.0.2" \
-"build-tools;25.0.1" "build-tools;24.0.3"
+"build-tools;25.0.1"
 
 # Android Emulator
 RUN sdkmanager "emulator" | echo y
 
 # Android System Images, for emulators
 # Please keep these in descending order!
-RUN sdkmanager "system-images;android-26;google_apis;x86" "system-images;android-25;google_apis;x86_64" \
-"system-images;android-22;default;x86" "system-images;android-22;default;x86_64" | echo y
+RUN sdkmanager "system-images;android-26;google_apis;x86" \
+"system-images;android-25;google_apis;x86_64" "system-images;android-22;default;x86" \
+"system-images;android-22;default;x86_64" | echo y
 
 # Extras
 RUN sdkmanager "extras;android;m2repository" "extras;google;m2repository" "extras;google;google_play_services" | echo y
