@@ -1,7 +1,7 @@
 # Docker Android Build Box
 
 
-[![Build Status](https://travis-ci.org/conhea/docker-android-build-box.svg?branch=master)](https://travis-ci.org/bohsen/docker-android-build-box)
+[![Build Status](https://travis-ci.org/conhea/docker-android-build-box.svg?branch=master)](https://travis-ci.org/conhea/docker-android-build-box)
 
 
 ## Introduction
