@@ -1,7 +1,7 @@
 # Docker Android Build Box
 
 
-[![Build Status](https://travis-ci.org/conhea/docker-android-build-box.svg?branch=master)](https://travis-ci.org/conhea/docker-android-build-box)
+[![Build Status](https://travis-ci.org/Conhea/docker-android-build-box.svg?branch=master)](https://travis-ci.org/Conhea/docker-android-build-box)
 
 
 ## Introduction
@@ -30,7 +30,7 @@ It includes the following components:
 
 ## Docker Pull Command
 
-The docker image is publicly available on [Docker Hub](https://hub.docker.com/r/conhea/android-build-box/) based on Dockerfile in this repo, so there is nothing hidden in the image. To pull the latest docker image:
+The docker image is publicly available on [Docker Hub](https://hub.docker.com/r/Conhea/android-build-box/) based on Dockerfile in this repo, so there is nothing hidden in the image. To pull the latest docker image:
 
     docker pull bohsen/android-build-box:latest
 
@@ -42,7 +42,7 @@ The docker image is publicly available on [Docker Hub](https://hub.docker.com/r/
 You can use this docker image to build your Android project with a single docker command:
 
     cd <android project directory>  # change working directory to your project root directory.
-    docker run --rm -v `pwd`:/project conhea/android-build-box bash -c 'cd /project; ./gradlew build'
+    docker run --rm -v `pwd`:/project Conhea/android-build-box bash -c 'cd /project; ./gradlew build'
 
 
 
@@ -71,7 +71,7 @@ The image itself is up to 3 GB (can change significantly on every build if sdk c
 
 ## Contribution
 
-If you want to enhance this docker image for fix something, feel free to send [pull request](https://github.com/conhea/docker-android-build-box/pull/new/master).
+If you want to enhance this docker image for fix something, feel free to send [pull request](https://github.com/Conhea/docker-android-build-box/pull/new/master).
 
 
 ## References
