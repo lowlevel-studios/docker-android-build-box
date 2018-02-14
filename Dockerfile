@@ -1,8 +1,10 @@
-FROM ubuntu:16.04
+FROM ubuntu:17.10
 
 MAINTAINER Thomas Schmidt
 
-ENV ANDROID_HOME /opt/android-sdk
+ENV ANDROID_HOME="/opt/android-sdk"
+# Get the latest version from https://developer.android.com/studio/index.html
+ENV ANDROID_SDK_TOOLS_VERSION="3859397"
 
 # ------------------------------------------------------
 # --- Environments and base directories
@@ -65,7 +67,7 @@ RUN apt-get update && \
 # --- Download Android SDK tools into $ANDROID_HOME
 # Newest version of sdk-tools can be found under 'Get just the command line tools' from here
 # https://developer.android.com/studio/index.html#downloads
-RUN wget -q -O tools.zip https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip && \
+RUN wget -q -O tools.zip https://dl.google.com/android/repository/sdk-tools-linux-${ANDROID_SDK_TOOLS_VERSION}.zip && \
     unzip -q tools.zip && \
     rm -fr $ANDROID_HOME tools.zip && \
     mkdir -p $ANDROID_HOME && \
