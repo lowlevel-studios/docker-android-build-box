@@ -2,7 +2,9 @@ FROM ubuntu:17.10
 
 MAINTAINER Thomas Schmidt
 
-ENV ANDROID_HOME="/opt/android-sdk"
+ENV ANDROID_HOME="/opt/android-sdk" \
+    JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
+    
 # Get the latest version from https://developer.android.com/studio/index.html
 ENV ANDROID_SDK_TOOLS_VERSION="3859397"
 
@@ -14,16 +16,16 @@ ENV ANDROID_SDK_TOOLS_VERSION="3859397"
 ENV LANG="en_US.UTF-8" \
     LANGUAGE="en_US.UTF-8" \
     LC_ALL="en_US.UTF-8"
+
+# Generate proper EN US UTF-8 locale
+# Install the "locales" package - required for locale-gen
+ENV DEBIAN_FRONTEND="noninteractive" \
+    TERM=dumb \
+    DEBIAN_FRONTEND=noninteractive
     
 # ------------------------------------------------------
 # --- Base pre-installed tools
 RUN apt-get update -qq
-    
-# Generate proper EN US UTF-8 locale
-# Install the "locales" package - required for locale-gen
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y \
-    locales && \ 
-    locale-gen en_US.UTF-8
 
 COPY README.md /README.md
 
@@ -51,6 +53,7 @@ RUN apt-get update && \
         m4 \
         ncurses-dev \
         ocaml \
+        openjdk-8-jdk \
         openssh-client \
         pkg-config \
         python-software-properties \
@@ -58,8 +61,6 @@ RUN apt-get update && \
         unzip \
         zip \
         zlib1g-dev && \
-    apt-add-repository -y ppa:openjdk-r/ppa && \
-    apt-get install -y openjdk-8-jdk && \
     rm -rf /var/lib/apt/lists/ && \
     apt-get clean
 
@@ -136,33 +137,9 @@ Run sdkmanager --update
 RUN sdkmanager --list
 
 # ------------------------------------------------------
-# --- Install Gradle from PPA
-
-# Gradle PPA
-RUN apt-get update
-RUN apt-get -y install gradle
-RUN gradle -v
-
-# ------------------------------------------------------
-# --- Install Maven 3 from PPA
-
-RUN apt-get purge maven maven2
-RUN apt-get update
-RUN apt-get -y install maven
-RUN mvn --version
-
-# ------------------------------------------------------
 # --- Install additional packages
 
 # Required for Android ARM Emulator
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y libqt5widgets5
 ENV QT_QPA_PLATFORM offscreen
 ENV LD_LIBRARY_PATH ${LD_LIBRARY_PATH}:${ANDROID_HOME}/tools/lib64
-
-# Export JAVA_HOME variable
-ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/
-
-# Support Gradle
-ENV TERM dumb
-ENV JAVA_OPTS "-Xms512m -Xmx1024m"
-ENV GRADLE_OPTS "-XX:+UseG1GC -XX:MaxGCPauseMillis=1000"
