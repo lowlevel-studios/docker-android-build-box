@@ -6,7 +6,7 @@
 
 ## Introduction
 
-A **docker** image build to supply an **Android** build environment. This is based on the fabulous work by [Ming Chen](https://github.com/mingchen/docker-android-build-box). So thanks goes to him for providing the base for this.
+A **docker** image that can be used to supply an **Android** build environment. This is based on the fabulous work by [Ming Chen](https://github.com/mingchen/docker-android-build-box). So thanks goes to him for providing the base for this.
 
 
 ## What's Inside
@@ -31,7 +31,7 @@ It includes the following components:
 
 ## Docker Pull Command
 
-The docker image is publicly available on [Docker Hub](https://hub.docker.com/r/bohsen/android-build-box/) based on Dockerfile in this repo, so there is nothing hidden in the image. To pull the latest docker image:
+The docker image is publicly available on [Docker Hub](https://hub.docker.com/r/bohsen/android-build-box/) based on the Dockerfile in this repo, so there is nothing hidden in the image. To pull the latest docker image:
 
     docker pull bohsen/android-build-box:latest
 
@@ -49,8 +49,8 @@ You can use this docker image to build your Android project with a single docker
 
 ### Use image for Bitbucket pipeline
 
-If you have Android code in Bitbucket and want to use it pipeline to build your Android code, you can simply specific this docker image.
-Here is an example of `bitbucket-pipelines.yml`
+If you have your Android proect hosted on [Bitbucket](https://bitbucket.org) and want to use a bitbucket pipeline to build your Android project, this docker image can do it for you.
+Here is an example of a pipeline defined in `bitbucket-pipelines.yml`
 
     image: bohsen/android-build-box:latest
 
@@ -64,15 +64,15 @@ Here is an example of `bitbucket-pipelines.yml`
 
 ## Docker Build Image
 
-If you want to build docker image by yourself, you can use following `docker build` command to build your image.
-The image itself is up to 3 GB (can change significantly on every build if sdk components change), so check your free disk space before building it.
+If you want to build the docker image locally, you can use the following `docker build` command to build the image.
+The image itself is up to 6 GB (can change significantly on every build if sdk components change), so check your free disk space before building it.
 
     docker build -t android-build-box .
 
 
 ## Contribution
 
-If you want to enhance this docker image for fix something, feel free to send [pull request](https://github.com/Conhea/docker-android-build-box/pull/new/master).
+If you want to enhance this docker image or fix something, feel free to send a [pull request](https://github.com/Conhea/docker-android-build-box/pull/new/master).
 
 
 ## References
