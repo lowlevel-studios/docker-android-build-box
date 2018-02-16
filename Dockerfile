@@ -20,8 +20,7 @@ ENV LANG="en_US.UTF-8" \
 # Generate proper EN US UTF-8 locale
 # Install the "locales" package - required for locale-gen
 ENV DEBIAN_FRONTEND="noninteractive" \
-    TERM=dumb \
-    DEBIAN_FRONTEND=noninteractive
+    TERM=dumb
     
 # ------------------------------------------------------
 # --- Base pre-installed tools
@@ -60,6 +59,7 @@ RUN apt-get update && \
         software-properties-common \
         unzip \
         zip \
+        libqt5widgets5 \
         zlib1g-dev && \
     rm -rf /var/lib/apt/lists/ && \
     apt-get clean
@@ -140,6 +140,5 @@ RUN sdkmanager --list
 # --- Install additional packages
 
 # Required for Android ARM Emulator
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y libqt5widgets5
 ENV QT_QPA_PLATFORM offscreen
 ENV LD_LIBRARY_PATH ${LD_LIBRARY_PATH}:${ANDROID_HOME}/tools/lib64
