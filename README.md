@@ -12,9 +12,9 @@ A **docker** image build to supply an **Android** build environment. This is bas
 ## What's Inside
 
 It includes the following components:
-* Ubuntu 16.04
+* Ubuntu 17.10.04
 * Android SDK 22 25 26 27
-* Android build tools 25.0.1 25.0.2 25.0.3 26.0.0 26.0.1 26.0.2 27.0.0
+* Android build tools 25.0.1 25.0.2 25.0.3 26.0.0 26.0.1 26.0.2 27.0.0 27.0.1 27.0.2 27.0.3
 * Android Emulator
 * System images:
   * system-images;android-22;default;x86
@@ -28,9 +28,10 @@ It includes the following components:
 * ConstraintLayout 1.0.1 1.0.2
 
 
+
 ## Docker Pull Command
 
-The docker image is publicly available on [Docker Hub](https://hub.docker.com/r/Conhea/android-build-box/) based on Dockerfile in this repo, so there is nothing hidden in the image. To pull the latest docker image:
+The docker image is publicly available on [Docker Hub](https://hub.docker.com/r/bohsen/android-build-box/) based on Dockerfile in this repo, so there is nothing hidden in the image. To pull the latest docker image:
 
     docker pull bohsen/android-build-box:latest
 
@@ -42,7 +43,7 @@ The docker image is publicly available on [Docker Hub](https://hub.docker.com/r/
 You can use this docker image to build your Android project with a single docker command:
 
     cd <android project directory>  # change working directory to your project root directory.
-    docker run --rm -v `pwd`:/project Conhea/android-build-box bash -c 'cd /project; ./gradlew build'
+    docker run --rm -v `pwd`:/project bohsen/android-build-box bash -c 'cd /project; ./gradlew build'
 
 
 
