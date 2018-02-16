@@ -12,7 +12,7 @@ A **docker** image build to supply an **Android** build environment. This is bas
 ## What's Inside
 
 It includes the following components:
-* Ubuntu 17.10.04
+* Ubuntu 17.10
 * Android SDK 22 25 26 27
 * Android build tools 25.0.1 25.0.2 25.0.3 26.0.0 26.0.1 26.0.2 27.0.0 27.0.1 27.0.2 27.0.3
 * Android Emulator
