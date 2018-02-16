@@ -31,9 +31,9 @@ WORKDIR /tmp
 
 # Installing packages
 RUN apt-get update -qq > /dev/null && \
-    locale-gen "$LANG" > /dev/null && \
-    dpkg-reconfigure locales > /dev/null && \
     apt-get install -qq locales > /dev/null && \
+    locale-gen "$LANG" > /dev/null && \
+    dpkg-reconfigure locales && \
     apt-get install -y --no-install-recommends \
         build-essential \
         autoconf \
