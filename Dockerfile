@@ -24,7 +24,6 @@ ENV DEBIAN_FRONTEND="noninteractive" \
     
 # ------------------------------------------------------
 # --- Base pre-installed tools
-RUN apt-get update -qq
 
 COPY README.md /README.md
 
@@ -34,6 +33,7 @@ WORKDIR /tmp
 RUN apt-get update -qq > /dev/null && \
     apt-get install -qq locales > /dev/null && \
     locale-gen "$LANG" > /dev/null && \
+    dpkg-reconfigure locales && \
     apt-get install -y --no-install-recommends \
         build-essential \
         autoconf \
@@ -120,7 +120,8 @@ RUN sdkmanager "emulator" | echo y
 RUN sdkmanager "system-images;android-27;google_apis;x86" | echo y
 RUN sdkmanager "system-images;android-26;google_apis;x86" | echo y
 RUN sdkmanager "system-images;android-25;google_apis;x86_64" | echo y
-RUN sdkmanager "system-images;android-22;default;x86" "system-images;android-22;default;x86_64" | echo y
+RUN sdkmanager "system-images;android-22;default;x86" | echo y
+RUN sdkmanager "system-images;android-22;default;x86_64" | echo y
 
 # Extras
 RUN sdkmanager "extras;android;m2repository" "extras;google;m2repository" "extras;google;google_play_services" | echo y
