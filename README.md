@@ -1,12 +1,12 @@
 # Docker Android Build Box
 
 
-[![Build Status](https://travis-ci.org/Conhea/docker-android-build-box.svg?branch=master)](https://travis-ci.org/Conhea/docker-android-build-box)
+[![Build Status](https://travis-ci.org/lowlevel-studios/docker-android-build-box.svg?branch=master)](https://travis-ci.org/lowlevel-studios/docker-android-build-box)
 
 
 ## Introduction
 
-A **docker** image that can be used to supply an **Android** build environment. This is based on the fabulous work by [Ming Chen](https://github.com/mingchen/docker-android-build-box). So thanks goes to him for providing the base for this.
+A **docker** image that can be used to supply an **Android** build environment. This is based on the fabulous work by [Ming Chen](https://github.com/mingchen/docker-android-build-box) and [Conhea](https://github.com/Conhea/docker-android-build-box). So thanks goes to them for providing the base for this.
 
 
 ## What's Inside
@@ -14,6 +14,7 @@ A **docker** image that can be used to supply an **Android** build environment. 
 It includes the following components:
 * Ubuntu 17.10
 * Android SDK 22 25 26 27
+* Android NDK r16b
 * Android build tools 25.0.1 25.0.2 25.0.3 26.0.0 26.0.1 26.0.2 27.0.0 27.0.1 27.0.2 27.0.3
 * Android Emulator
 * System images:
@@ -31,9 +32,9 @@ It includes the following components:
 
 ## Docker Pull Command
 
-The docker image is publicly available on [Docker Hub](https://hub.docker.com/r/bohsen/android-build-box/) based on the Dockerfile in this repo, so there is nothing hidden in the image. To pull the latest docker image:
+The docker image is publicly available on [Docker Hub](https://hub.docker.com/r/lowlevelstudios/android-build-box/) based on the Dockerfile in this repo, so there is nothing hidden in the image. To pull the latest docker image:
 
-    docker pull bohsen/android-build-box:latest
+    docker pull lowlevelstudios/android-build-box:latest
 
 
 ## Usage
@@ -43,13 +44,13 @@ The docker image is publicly available on [Docker Hub](https://hub.docker.com/r/
 You can use this docker image to build your Android project with a single docker command:
 
     cd <android project directory>  # change working directory to your project root directory.
-    docker run --rm -v `pwd`:/project bohsen/android-build-box bash -c 'cd /project; ./gradlew build'
+    docker run --rm -v `pwd`:/project lowlevelstudios/android-build-box bash -c 'cd /project; ./gradlew build'
 
 
 
 ### Use image for Bitbucket pipeline
 
-If you have your Android proect hosted on [Bitbucket](https://bitbucket.org) and want to use a bitbucket pipeline to build your Android project, this docker image can do it for you.
+If you have your Android project hosted on [Bitbucket](https://bitbucket.org) and want to use a bitbucket pipeline to build your Android project, this docker image can do it for you.
 Here is an example of a pipeline defined in `bitbucket-pipelines.yml`
 
     image: bohsen/android-build-box:latest
@@ -72,7 +73,7 @@ The image itself is up to 6 GB (can change significantly on every build if sdk c
 
 ## Contribution
 
-If you want to enhance this docker image or fix something, feel free to send a [pull request](https://github.com/Conhea/docker-android-build-box/pull/new/master).
+If you want to enhance this docker image or fix something, feel free to send a [pull request](https://github.com/lowlevel-studios/docker-android-build-box/pull/new/master).
 
 
 ## References
