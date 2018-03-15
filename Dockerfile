@@ -3,10 +3,14 @@ FROM ubuntu:17.10
 MAINTAINER Thomas Schmidt
 
 ENV ANDROID_HOME="/opt/android-sdk" \
+    ANDROID_NDK="/opt/android-ndk" \
     JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
     
 # Get the latest version from https://developer.android.com/studio/index.html
 ENV ANDROID_SDK_TOOLS_VERSION="3859397"
+
+# Get the latest version from https://developer.android.com/ndk/downloads/index.html
+ENV ANDROID_NDK_VERSION="16b"
 
 # ------------------------------------------------------
 # --- Environments and base directories
@@ -77,8 +81,13 @@ RUN wget -q -O tools.zip https://dl.google.com/android/repository/sdk-tools-linu
     mkdir -p $ANDROID_HOME && \
     mv tools $ANDROID_HOME/tools
     
+RUN wget -q -O android-ndk.zip http://dl.google.com/android/repository/android-ndk-r${ANDROID_NDK_VERSION}-linux-x86_64.zip && \
+    mkdir --parents "$ANDROID_NDK" && \
+    unzip -q android-ndk.zip -d "$ANDROID_NDK" && \
+    rm --force android-ndk.zip && \
+    
 # Add android commands to PATH
-ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}/platform-tools
+ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}/platform-tools:${ANDROID_NDK}
 
 # ------------------------------------------------------
 # --- Install Android SDKs and other build packages
