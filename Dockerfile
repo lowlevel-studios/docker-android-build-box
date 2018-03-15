@@ -82,9 +82,9 @@ RUN wget -q -O tools.zip https://dl.google.com/android/repository/sdk-tools-linu
     mv tools $ANDROID_HOME/tools
     
 RUN wget -q -O android-ndk.zip http://dl.google.com/android/repository/android-ndk-r${ANDROID_NDK_VERSION}-linux-x86_64.zip && \
-    mkdir --parents "$ANDROID_NDK" && \
-    unzip -q android-ndk.zip -d "$ANDROID_NDK" && \
-    rm --force android-ndk.zip && \
+    mkdir -p $ANDROID_NDK && \
+    unzip -q android-ndk.zip -d $ANDROID_NDK && \
+    rm -f android-ndk.zip
     
 # Add android commands to PATH
 ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}/platform-tools:${ANDROID_NDK}
