@@ -17,12 +17,6 @@ It includes the following components:
 * Android NDK r16b
 * Android build tools 25.0.1 25.0.2 25.0.3 26.0.0 26.0.1 26.0.2 27.0.0 27.0.1 27.0.2 27.0.3
 * Android Emulator
-* System images:
-  * system-images;android-22;default;x86
-  * system-images;android-22;default;x86_64
-  * system-images;android-25;google_apis;x86_64
-  * system-images;android-26;google_apis;x86
-  * system-images;android-27;google_apis;x86
 * extra-android-m2repository
 * extra-google-google_play_services
 * extra-google-m2repository
