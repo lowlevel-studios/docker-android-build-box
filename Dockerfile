@@ -124,14 +124,6 @@ RUN sdkmanager "build-tools;27.0.3" "build-tools;27.0.2" "build-tools;27.0.1" "b
 # Android Emulator
 RUN sdkmanager "emulator" | echo y
 
-# Android System Images, for emulators
-# Please keep these in descending order!
-RUN sdkmanager "system-images;android-27;google_apis;x86" | echo y
-RUN sdkmanager "system-images;android-26;google_apis;x86" | echo y
-RUN sdkmanager "system-images;android-25;google_apis;x86_64" | echo y
-RUN sdkmanager "system-images;android-22;default;x86" | echo y
-RUN sdkmanager "system-images;android-22;default;x86_64" | echo y
-
 # Extras
 RUN sdkmanager "extras;android;m2repository" "extras;google;m2repository" "extras;google;google_play_services" | echo y
 
